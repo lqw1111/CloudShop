@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: frontend-cart
+  rabbitmq:
+      addresses: 127.0.0.1
+      username: guest
+      password: guest
+      port: 5672
+      virtual-host: /
+
+server:
+  port: 9040
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+      prefer-ip-address: true
+
+#临时购物车的key
+cart_cookie_name: CART_COOKIE_NAME
+
+
+

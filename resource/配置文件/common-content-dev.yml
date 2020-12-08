@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: common-content
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bz_shop?characterEncoding=UTF-8
+    username: root
+    password: 3773032
+    type: com.alibaba.druid.pool.DruidDataSource
+  rabbitmq:
+      addresses: 127.0.0.1
+      username: guest
+      password: guest
+      port: 5672
+      virtual-host: /
+
+server:
+  port: 9020
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+
+frontend:
+  AD: 89

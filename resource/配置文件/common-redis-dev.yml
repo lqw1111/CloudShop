@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: common-redis
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10 #连接池最大空闲数
+        min-idle: 0
+    timeout: 2000
+  rabbitmq:
+      addresses: 127.0.0.1
+      username: guest
+      password: guest
+      port: 5672
+      virtual-host: /
+
+server:
+  port: 9080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+frontend_catresult_redis_key: frontend:catresult:redis:key
+
+frontend_ad_redis_key: frontend:ad:redis:key:89
+
+#缓存商品基本信息
+frontend_item_basic_info_key: frontend:item:basic:info:key
+
+#缓存商品介绍
+frontend_item_desc_key: frontend:item:desc:key
+
+#缓存商品规格参数
+frontend_item_param_key: frontend:item:param:key
+
+#缓存用户的key
+user_session_redis_key: user:session:redis:key
+
+#缓存购物车的key
+frontend_cart_redis_key: frontend:cart:redis:key
+
+#缓存订单Id的key
+order_item_id_key: order:item:id:key
+
+#订单Id初始值
+init_item_id: 2000

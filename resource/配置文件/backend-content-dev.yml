@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: backend-content
+  rabbitmq:
+      addresses: 127.0.0.1
+      username: guest
+      password: guest
+      port: 5672
+      virtual-host: /
+server:
+  port: 9021
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+      prefer-ip-address: true
+
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070

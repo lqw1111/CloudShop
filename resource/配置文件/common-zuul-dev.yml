@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: common-zuul
+  rabbitmq:
+      addresses: 127.0.0.1
+      username: guest
+      password: guest
+      port: 5672
+      virtual-host: /
+
+server:
+  port: 7070
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+      prefer-ip-address: true
+zuul:
+  sensitive-headers: true  #全局配置，解决在网关服务中不传递请求头的问题
+  routes:
+    #后台商品服务路由规则
+    backend-item:
+      path: /backend_item/**
+
+    #后台CMS服务的路由规则
+    backend-content:
+      path: /backend_content/**
+
+    #前台首页服务的路由规则
+    frontend-portal:
+      path: /frontend_potal/**
+
+    #前台搜索服务的路由规则
+    frontend-search:
+      path: /frontend_search/**
+
+    #前台用户注册与登陆服务
+    frontend-sso:
+      path: /frontend_sso/**
+
+    #前台订单服务
+    frontend-order:
+      path: /frontend_order/**
+
+    #前台购物车服务
+    frontend-cart:
+      path: /frontend_cart/**
+
+#配置网关请求服务的超时时间
+#第一层hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000  #默认为线程池隔离，默认超时时间为1000ms
+
+#第二层ribbon的超时时间设置
+ribbon:
+  ConnectTimeout: 3000  #设置请求连接的默认时间 默认为5秒，这个时间不可以超过hystrix的时间
+  ReadTimeout: 3000     #设置请求处理超时时间 默认为5秒
+
