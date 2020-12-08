@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjsxt.mapper.SolrItemMapper">
+
+    <select id="getItemList" resultType="com.bjsxt.pojo.SolrItem">
+      SELECT
+        item.id,
+        item.title,
+        item.sell_point,
+        item.price,
+        item.image,
+        cat.`name`,
+        idesc.item_desc
+        FROM
+        tb_item item
+        LEFT JOIN tb_item_cat cat ON item.cid = cat.id
+        LEFT JOIN tb_item_desc idesc ON item.id = idesc.item_id
+    </select>
+
+</mapper>

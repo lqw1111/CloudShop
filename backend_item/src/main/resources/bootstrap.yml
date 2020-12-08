@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled:
+          server: true
+          serviceId: common-config  #指定配置中心服务端的服务名称
+      name: backend-item  #对应的(application)部分
+      profile: dev
+      uri: http://localhost:9000  #配置中心的具体地址，Greewich中需要具体添加
+      label: master
+feign:
+  hystrix:
+    enabled: true
